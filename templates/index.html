@@ -28,10 +28,9 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="index.html">Home</a>
+        <a href="/index.html">Home</a>
         <a href="https://aqicn.org/map/world">Global Map</a>
-        <a href="globalmap.html">Global Map</a>
-        <a href="Polluter.html">Polluter Count</a>
+        <a href="../Polluter.html">Polluter Count</a>
         <!-- Add more headers as needed -->
     </div>
 <style>
@@ -96,8 +95,13 @@
         <h2>Result:</h2>
         <p>{{ after | safe }}</p>
     {% endif %}
-    {% for imgsrc in image_links %}
-        <img src="{{ imgsrc }}" alt="Image">
-    {% endfor %}
+    {% if more_info %}
+        <p>{{ more_info | safe }}</p>
+    {% endif %}
+    <div style="display: flex; flex-direction: row;">
+        {% for imgsrc in image_links %}
+            <img src="{{ imgsrc }}" alt="Image" style="margin-right: 10px;">
+        {% endfor %}
+    </div>
 </body>
 </html>

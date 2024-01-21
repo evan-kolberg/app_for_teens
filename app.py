@@ -7,10 +7,11 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    query = ''
     if request.method == 'POST':
         query = request.form.get('query')
         response = requests.get(f'http://google.com/search?q=wikihow+steps+to+recycle+{query}')
-        response2 = requests.get(f'https://images.search.yahoo.com/search/images?p=${query}+pullute')
+        response2 = requests.get(f'https://images.search.yahoo.com/search/images?p=${query}+pollute')
         
         soup = BeautifulSoup(response.text, 'html.parser')
         soup2 = BeautifulSoup(response2.text, 'html.parser')
@@ -26,7 +27,7 @@ def index():
         images = soup2.find_all('img')
         all_image_links = [img.get('src') for img in images if img.get('src') is not None]
         https_image_links = [link for link in all_image_links if link.startswith('https')]
-        image_links = https_image_links[:5]
+        image_links = https_image_links[:4]
 
 
         if result != None:
@@ -36,5 +37,3 @@ def index():
     return render_template('index.html')
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
-
-
