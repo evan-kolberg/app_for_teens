@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <style>
+        body {
+            background-color: #c2e4f149;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #4CAF50;
+            text-align: center;
+        }
+        .navbar a {
+            display: inline-block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        /* Other styles remain the same */
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="https://aqicn.org/map/world">Global Map</a>
+        <a href="globalmap.html">Global Map</a>
+        <a href="Polluter.html">Polluter Count</a>
+        <!-- Add more headers as needed -->
+    </div>
+<style>
+        form {
+            margin: 20px auto;
+            width: 50%;
+            text-align: center;
+        }
+        input[type=text] {
+            padding: 10px;
+            width: 70%;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0px 0px 10px #888888;
+        }
+        input[type=submit] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px #888888;
+        }
+        input[type=submit]:hover {
+            background-color: #3e8e41;
+        }
+        h2 {
+            margin-top: 50px;
+            text-align: center;
+            color: rgba(68, 131, 248, 0.667);
+        }
+        p {
+            margin: 20px auto;
+            width: 50%;
+            text-align: justify;
+            line-height: 1.5;
+        }
+        img {
+            display: block;
+            margin: auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1 style="color: rgba(68, 131, 248, 0.667);">Help Me Recycle!</h1>
+    </h1>
+    </div>
+    <form method="POST">
+        <input type="text" name="query" placeholder="Enter your search query">
+        <input type="submit" value="Search">    
+    </form>
+    
+    {% if before %}
+        <h2>before:</h2>
+        <p>{{ before }}</p>
+    {% endif %}
+    {% if after %}
+        <h2>Result:</h2>
+        <p>{{ after | safe }}</p>
+    {% endif %}
+    {% for imgsrc in image_links %}
+        <img src="{{ imgsrc }}" alt="Image">
+    {% endfor %}
+</body>
+</html>
